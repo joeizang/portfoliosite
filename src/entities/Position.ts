@@ -13,7 +13,7 @@ export class Position extends PortfolioBaseEntity {
 
     @Field({ nullable: false })
     @Column({
-        length: 25,
+        length: 30,
         nullable: false,
     })
     title!: string;
@@ -37,17 +37,11 @@ export class Position extends PortfolioBaseEntity {
         type: 'date',
         nullable: true,
     })
-    endDate!: Date;
+    endDate?: Date;
 
-    @Column({
-        type: 'enum',
-        enum: ['Full Time', 'Part Time', 'Contract', 'Internship'],
-        nullable: false,
-    })
+    @Field(() => EmploymentType, { nullable: false })
+    @Column('enum', { name: 'employment_type', enum: EmploymentType })
     employmentType!: EmploymentType;
-
-    @Field(() => [String], { nullable: false })
-    employmentTypes: string[];
 
     @Field({ nullable: false })
     @Column({

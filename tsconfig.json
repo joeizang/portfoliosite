@@ -19,7 +19,7 @@
         "noImplicitReturns": true,
         "esModuleInterop": true,
         "noFallthroughCasesInSwitch": true,
-        "allowSyntheticDefaultImports": false,
+        "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "skipLibCheck": true,

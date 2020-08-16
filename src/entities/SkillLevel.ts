@@ -1,3 +1,24 @@
-export type SkillLevel = 'Beginner' | 'Advanced Beginner' | 'Competent' | 'Proficient' | 'Expert';
+import { registerEnumType } from 'type-graphql';
 
-export type EmploymentType = 'Full Time' | 'Part Time' | 'Contract' | 'Internship';
+export enum SkillLevel {
+    Beginner = 'Beginner',
+    Advanced_Beginner = 'Advanced Beginner',
+    Competent = 'Competent',
+    Proficient = 'Proficient',
+    Expert = 'Expert',
+}
+
+export enum EmploymentType {
+    Full_Time = 'Full Time',
+    Part_Time = 'Part Time',
+    Contract = 'Contract',
+    Internship = 'Internship',
+}
+
+registerEnumType(SkillLevel, {
+    name: 'SkillLevel',
+});
+
+registerEnumType(EmploymentType, {
+    name: 'EmploymentType',
+});

@@ -1,13 +1,22 @@
-version: "3"
+version: '3'
 
 services:
-  pgdb:
-    image: "postgres"
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "testpassword"
-      POSTGRES_DB: "portfolio"
-    ports:
-      - "5432:5432"
-    volumes:
-      - $HOME/docker/volumes/postgres:/var/lib/postgres/data/
+    pgdb:
+        image: 'postgres'
+        environment:
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'testpassword'
+            POSTGRES_DB: 'portfolio'
+        ports:
+            - '5432:5432'
+        volumes:
+            - $HOME/docker/volumes/postgres:/var/lib/postgres/data/
+    myredis:
+        image: 'redis'
+        ports:
+            - '6379:6379'
+        volumes:
+            - $HOME/docker/volumes/redis:/var/lib/redis
+            - $HOME/docker/volumes/redis/redis.conf:/usr/local/etc/redis/redis.conf
+        environment:
+            - REDIS_REPLICATION_MODE=master

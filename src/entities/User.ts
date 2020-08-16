@@ -4,6 +4,7 @@ import { Bio } from './Bio';
 import { Skill } from './Skill';
 import { PortfolioBaseEntity } from '../abstractions/PortfolioBaseEntity';
 import { ObjectType, Field, ID } from 'type-graphql';
+import { Project } from './Project';
 
 @ObjectType()
 @Entity()
@@ -12,16 +13,27 @@ export class User extends PortfolioBaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Field({ nullable: false })
+    @Field()
     @Column({
         length: 100,
-        nullable: false,
     })
-    authId!: string;
+    authId: string;
+
+    @Field({ nullable: false })
+    @Column({
+        length: 50,
+        nullable: false,
+        unique: true,
+    })
+    email!: string;
 
     @Field(() => [Position])
     @OneToMany(() => Position, (position) => position)
     positions?: Position[];
+
+    @Field(() => [Project])
+    @OneToMany(() => Project, (proj) => proj)
+    projects?: Project[];
 
     @Field(() => [Skill])
     @OneToMany(() => Skill, (skill) => skill)

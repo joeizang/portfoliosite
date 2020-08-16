@@ -25,14 +25,6 @@ export class Bio extends PortfolioBaseEntity {
     })
     lastName!: string;
 
-    @Field({ nullable: false })
-    @Column({
-        length: 25,
-        nullable: false,
-        unique: true,
-    })
-    email!: string;
-
     @Field({ nullable: true })
     @Column({
         length: 200,

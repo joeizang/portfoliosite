@@ -18,16 +18,9 @@ export class Skill extends PortfolioBaseEntity {
     })
     name!: string;
 
-    @Column({
-        type: 'enum',
-        enum: ['Beginner', 'Advanced Beginner', 'Competent', 'Proficient', 'Expert'],
-        default: 'Beginner',
-        nullable: false,
-    })
+    @Field(() => SkillLevel)
+    @Column('enum', { name: 'skill_level', enum: SkillLevel })
     skillLevel!: SkillLevel;
-
-    @Field(() => [String], { nullable: false })
-    skillLevels: string[];
 
     @Field(() => User, { nullable: false })
     @ManyToOne(() => User, (user) => user, { nullable: false })
