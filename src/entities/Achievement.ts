@@ -17,8 +17,12 @@ export class Achievement extends PortfolioBaseEntity {
     })
     description!: string;
 
+    @Field()
+    @Column()
+    positionId: number;
+
     @Field(() => Position, { nullable: false })
-    @ManyToOne(() => Position, (position) => position, { nullable: false })
-    @JoinColumn()
-    position!: Position;
+    @ManyToOne(() => Position, (position) => position)
+    @JoinColumn({ name: 'positionId' })
+    position: Position;
 }

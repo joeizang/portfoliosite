@@ -1,14 +1,9 @@
-import { Column, BaseEntity } from 'typeorm';
+import { BaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export class PortfolioBaseEntity extends BaseEntity {
-    @Column({
-        type: 'timestamptz',
-        nullable: false,
-    })
+    @CreateDateColumn({ nullable: false })
     createdAt!: Date;
 
-    @Column({
-        type: 'timestamptz',
-    })
+    @UpdateDateColumn({ nullable: false })
     updatedAt!: Date;
 }

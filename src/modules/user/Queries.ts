@@ -8,7 +8,10 @@ export class UserQueryResolver {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     @Query((_returns) => [User])
     async users(@Args() { skip, take }: GetAllUsersArgs): Promise<User[] | undefined> {
-        return await User.find({ skip, take });
+        return await User.getRepository().find({
+            skip,
+            take,
+        });
     }
 
     @Query(() => User, { nullable: true })

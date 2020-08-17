@@ -9,6 +9,7 @@ import { UserMutationResolver, UserQueryResolver } from './modules/user';
 import { CreatePositionResolver } from './modules/position/Mutations';
 import { redis } from './redis';
 import cors from 'cors';
+import { BioQueryResolver } from './modules/bio/Queries';
 // import jwt from 'express-jwt';
 // import jwks from 'jwks-rsa';
 
@@ -16,10 +17,9 @@ const main = async () => {
     console.log('creating typeorm connection now...');
     await createConnection();
     const schema = await buildSchema({
-        resolvers: [UserMutationResolver, UserQueryResolver, CreatePositionResolver],
+        resolvers: [UserMutationResolver, UserQueryResolver, CreatePositionResolver, BioQueryResolver],
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const gqlServer = new ApolloServer({ schema, context: ({ req }: any) => ({ req }) });
+
     const app = express();
     app.use(
         cors({
@@ -41,6 +41,9 @@ const main = async () => {
     // });
 
     // app.use(jwtCheck);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const gqlServer = new ApolloServer({ schema, context: ({ req, res }: any) => ({ req, res }) });
 
     const RedisStore = connectRedis(session);
     app.use(

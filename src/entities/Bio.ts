@@ -41,11 +41,12 @@ export class Bio extends PortfolioBaseEntity {
     @OneToMany(() => WebLink, (wlinks) => wlinks, { nullable: true })
     webLinks?: WebLink[];
 
+    @Field()
     @Column({ nullable: false })
     userId: number;
 
     @Field(() => User, { nullable: false })
     @OneToOne(() => User, (user) => user.bio, { nullable: false })
-    @JoinColumn()
+    @JoinColumn({ name: 'userId' })
     user!: User;
 }

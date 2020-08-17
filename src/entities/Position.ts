@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { EmploymentType } from './SkillLevel';
 import { PortfolioBaseEntity } from '../abstractions/PortfolioBaseEntity';
 import { Achievement } from './Achievement';
 import { ObjectType, Field, ID } from 'type-graphql';
+import { User } from './User';
 
 @ObjectType()
 @Entity()
@@ -52,4 +53,13 @@ export class Position extends PortfolioBaseEntity {
     @Field(() => [Achievement])
     @OneToMany(() => Achievement, (achieve) => achieve.position)
     achievements?: Achievement[];
+
+    @Field()
+    @Column()
+    userId: number;
+
+    @Field(() => User)
+    @ManyToOne(() => User, (user) => user, { eager: true })
+    @JoinColumn({ name: 'userId' })
+    user: User;
 }

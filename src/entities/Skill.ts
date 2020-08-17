@@ -22,8 +22,12 @@ export class Skill extends PortfolioBaseEntity {
     @Column('enum', { name: 'skill_level', enum: SkillLevel })
     skillLevel!: SkillLevel;
 
-    @Field(() => User, { nullable: false })
-    @ManyToOne(() => User, (user) => user, { nullable: false })
-    @JoinColumn({ referencedColumnName: 'id' })
-    user!: User;
+    @Field()
+    @Column()
+    userId: number;
+
+    @Field(() => User)
+    @ManyToOne(() => User, (user) => user, { eager: true })
+    @JoinColumn({ name: 'userId' })
+    user: User;
 }

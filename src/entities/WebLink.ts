@@ -24,8 +24,12 @@ export class WebLink extends PortfolioBaseEntity {
     })
     webAddress!: string;
 
+    @Field()
+    @Column()
+    bioId: number;
+
     @Field(() => Bio, { nullable: false })
-    @ManyToOne(() => Bio, (bio) => bio.webLinks, { nullable: false })
-    @JoinColumn({ name: 'bioId', referencedColumnName: 'userId' })
+    @ManyToOne(() => Bio, (bio) => bio.webLinks)
+    @JoinColumn({ name: 'bioId' })
     bio!: Bio;
 }

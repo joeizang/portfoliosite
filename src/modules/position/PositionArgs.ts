@@ -1,9 +1,13 @@
 import { ArgsType, Field } from 'type-graphql';
-import { Length, IsDate, IsEnum } from 'class-validator';
+import { Length, IsDate, IsEnum, IsNumber } from 'class-validator';
 import { EmploymentType } from '../../entities/SkillLevel';
 
 @ArgsType()
 export class PositionArgs {
+    @Field({ nullable: false })
+    @IsNumber()
+    userId!: number;
+
     @Field({ nullable: false })
     @Length(3, 30)
     title!: string;
