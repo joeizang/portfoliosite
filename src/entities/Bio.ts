@@ -37,8 +37,14 @@ export class Bio extends PortfolioBaseEntity {
     })
     objective?: string;
 
+    @Field({ nullable: true })
+    @Column({
+        length: 160,
+    })
+    catchPhrase?: string;
+
     @Field(() => [WebLink])
-    @OneToMany(() => WebLink, (wlinks) => wlinks, { nullable: true })
+    @OneToMany(() => WebLink, (wlinks) => wlinks.bio, { nullable: true })
     webLinks?: WebLink[];
 
     @Field()

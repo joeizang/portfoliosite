@@ -23,11 +23,11 @@ export class Skill extends PortfolioBaseEntity {
     skillLevel!: SkillLevel;
 
     @Field()
-    @Column()
-    userId: number;
+    @Column({ nullable: false })
+    userId!: number;
 
     @Field(() => User)
-    @ManyToOne(() => User, (user) => user, { eager: true })
+    @ManyToOne(() => User, (user) => user.skills, { nullable: false })
     @JoinColumn({ name: 'userId' })
-    user: User;
+    user!: User;
 }

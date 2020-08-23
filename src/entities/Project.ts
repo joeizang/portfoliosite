@@ -27,12 +27,16 @@ export class Project extends PortfolioBaseEntity {
     @Column({ nullable: true })
     webAddress?: string;
 
+    @Field({ nullable: true })
+    @Column({ nullable: true })
+    webAddressThumbnail?: string;
+
     @Field()
     @Column()
     userId: number;
 
     @Field(() => User)
-    @ManyToOne(() => User, (user) => user)
+    @ManyToOne(() => User, (user) => user.projects)
     @JoinColumn({ name: 'userId' })
     user!: User;
 }
