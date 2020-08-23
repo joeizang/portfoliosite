@@ -22,7 +22,7 @@ export class Achievement extends PortfolioBaseEntity {
     positionId: number;
 
     @Field(() => Position, { nullable: false })
-    @ManyToOne(() => Position, (position) => position)
+    @ManyToOne(() => Position, (position) => position.achievements)
     @JoinColumn({ name: 'positionId' })
     position: Position;
 }

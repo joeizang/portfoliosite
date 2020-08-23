@@ -59,7 +59,7 @@ export class Position extends PortfolioBaseEntity {
     userId: number;
 
     @Field(() => User)
-    @ManyToOne(() => User, (user) => user, { eager: true })
+    @ManyToOne(() => User, (user) => user.positions)
     @JoinColumn({ name: 'userId' })
     user: User;
 }

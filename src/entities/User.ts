@@ -28,15 +28,15 @@ export class User extends PortfolioBaseEntity {
     email!: string;
 
     @Field(() => [Position])
-    @OneToMany(() => Position, (position) => position)
+    @OneToMany(() => Position, (position) => position.user)
     positions?: Position[];
 
     @Field(() => [Project])
-    @OneToMany(() => Project, (proj) => proj)
+    @OneToMany(() => Project, (proj) => proj.user)
     projects?: Project[];
 
     @Field(() => [Skill])
-    @OneToMany(() => Skill, (skill) => skill)
+    @OneToMany(() => Skill, (skill) => skill.user)
     skills?: Skill[];
 
     @Field(() => Bio)

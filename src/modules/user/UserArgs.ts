@@ -12,6 +12,8 @@ export class GetAllUsersArgs {
     @Max(50)
     take = 25;
 }
+@ArgsType()
+export class FromGoogleOAuth2 {}
 
 @ArgsType()
 export class GetUserArgs {
