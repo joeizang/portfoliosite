@@ -1,0 +1,25 @@
+{
+  "name": "portfolioclient",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "next": "9.5.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.6.1",
+    "@types/react": "^16.9.48",
+    "typescript": "^4.0.2"
+  }
+}

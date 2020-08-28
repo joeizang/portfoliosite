@@ -7,7 +7,7 @@ import { UserMutationResolver, UserQueryResolver } from './modules/user';
 import { CreatePositionResolver } from './modules/position/Mutations';
 import cors from 'cors';
 import { BioQueryResolver } from './modules/bio/Queries';
-import { checkJwt } from './auth/validate';
+// import { checkJwt } from './auth/validate';
 // import jwt from 'express-jwt';
 // import jwks from 'jwks-rsa';
 
@@ -29,7 +29,7 @@ const main = async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const gqlServer = new ApolloServer({ schema, context: ({ req, res }: any) => ({ req, res }) });
 
-    app.use(checkJwt);
+    // app.use(checkJwt);
 
     gqlServer.applyMiddleware({ app });
 

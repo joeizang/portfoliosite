@@ -16,6 +16,7 @@ export class User extends PortfolioBaseEntity {
     @Field()
     @Column({
         length: 100,
+        nullable: true,
     })
     authId: string;
 
@@ -39,7 +40,7 @@ export class User extends PortfolioBaseEntity {
     @OneToMany(() => Skill, (skill) => skill.user)
     skills?: Skill[];
 
-    @Field(() => Bio)
+    @Field(() => Bio, { nullable: true })
     @OneToOne(() => Bio, (bio) => bio.user)
     bio?: Bio;
 }

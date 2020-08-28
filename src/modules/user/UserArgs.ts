@@ -1,5 +1,5 @@
 import { ArgsType, Field, Int, InputType } from 'type-graphql';
-import { Max, Min, IsEmail } from 'class-validator';
+import { Max, Min, IsEmail, IsBoolean, Length } from 'class-validator';
 
 @ArgsType()
 export class GetAllUsersArgs {
@@ -13,7 +13,44 @@ export class GetAllUsersArgs {
     take = 25;
 }
 @ArgsType()
-export class FromGoogleOAuth2 {}
+export class FromGoogleOAuth2 {
+    @Field({ nullable: false })
+    @Length(2, 100)
+    email: string;
+
+    @Field({ nullable: false })
+    @IsBoolean()
+    isVerified: boolean;
+
+    @Field({ nullable: false })
+    @Length(2, 100)
+    name: string;
+
+    @Field()
+    @Length(2, 1000)
+    publicProfileUrl: string;
+
+    @Field()
+    @Length(2, 200)
+    photo: string;
+
+    @Field({ nullable: false })
+    @Length(2, 100)
+    country: string;
+
+    @Field({ nullable: false })
+    @Length(2, 30)
+    language: string;
+}
+
+@InputType()
+export class LoginInput {
+    @Field({ nullable: false })
+    email: string;
+
+    @Field()
+    isValid: boolean;
+}
 
 @ArgsType()
 export class GetUserArgs {
